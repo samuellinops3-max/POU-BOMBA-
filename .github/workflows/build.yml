@@ -1,0 +1,16 @@
+name: Build PKG
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          echo "Compilando POU..."
+          mkdir -p out
+          echo "POU PS3" > out/POU.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: POU-PS3-PKG
+          path: out/
